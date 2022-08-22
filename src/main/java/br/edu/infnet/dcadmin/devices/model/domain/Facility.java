@@ -81,4 +81,9 @@ public class Facility implements Serializable {
 		return Objects.equals(id, other.id);
 	}
 
+	@Override
+	public String toString() {
+		return "Facility [id=" + id + ", name=" + name + ", type=" + type + ", address=" + address + "]";
+	}
+
 }
