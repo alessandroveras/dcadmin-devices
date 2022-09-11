@@ -17,27 +17,39 @@ public class PortLoader implements ApplicationRunner {
 
 	@Autowired
 	private PortService portService;
-	
+
 	@Autowired
 	private DeviceService deviceService;
 
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
 		System.out.println("[INFO]:::::::::::::::::::::::::::::: Execucao do loader de port");
-		Port port = null;
-		Device device = null;
+		Device deviceA = null;
+		Device deviceB = null;
+		Port portA = null;
+		Port portB = null;
 
 		try {
-			device = new Device();
-			device = deviceService.findById(1L);
-			
-			port = new Port();
-			port.setAlias("TenGigabitEthernet0/0/0/0");
-			port.setMediaType("10GBASE-SR");
-			port.setSpeed(10000);
-			port.setDevice(device);
+			deviceA = new Device();
+			deviceA = deviceService.findById(1L);
 
-			portService.create(port);
+			deviceB = new Device();
+			deviceB = deviceService.findById(2L);
+
+			portA = new Port();
+			portA.setAlias("TenGigabitEthernet0/0/0/0");
+			portA.setMediaType("10GBASE-SR");
+			portA.setSpeed(10000);
+			portA.setDevice(deviceA);
+
+			portB = new Port();
+			portB.setAlias("TenGigabitEthernet0/0/0/0");
+			portB.setMediaType("10GBASE-SR");
+			portB.setSpeed(10000);
+			portB.setDevice(deviceB);
+
+			portService.create(portA);
+			portService.create(portB);
 
 			System.out.println("Inclusao de port realizada com sucesso");
 

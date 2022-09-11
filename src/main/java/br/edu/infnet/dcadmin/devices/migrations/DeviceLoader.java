@@ -19,17 +19,28 @@ public class DeviceLoader implements ApplicationRunner {
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
 		System.out.println("[INFO]:::::::::::::::::::::::::::::: Execucao do loader do device");
-		Device device = null;
+		
+		Device deviceA = null;
+		Device deviceB = null;
 
 		try {
-			device = new Device();
-			device.setSerialNumber("FCA111111");
-			device.setHostname("DEMO-DEVICE-1");
-			device.setType("ROUTER");
-			device.setRole("EDGE");
-			device.setFabricCapacity(320000);
-
-			deviceService.create(device);
+			deviceA = new Device();
+			deviceA.setSerialNumber("FCA111111");
+			deviceA.setHostname("DEMO-DEVICE-1");
+			deviceA.setType("ROUTER");
+			deviceA.setRole("EDGE");
+			deviceA.setFabricCapacity(320000);
+			
+			deviceService.create(deviceA);
+			
+			deviceB = new Device();
+			deviceB.setSerialNumber("FCA222222");
+			deviceB.setHostname("DEMO-DEVICE-2");
+			deviceB.setType("ROUTER");
+			deviceB.setRole("EDGE");
+			deviceB.setFabricCapacity(320000);
+			
+			deviceService.create(deviceB);
 
 			System.out.println("Inclusao de device realizada com sucesso");
 

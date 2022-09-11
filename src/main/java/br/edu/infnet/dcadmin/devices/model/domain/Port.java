@@ -28,6 +28,7 @@ public class Port implements Serializable {
 	private Device device;
 
 	public Port() {
+		this.status = "unknown";
 	}
 
 	public Port(Long id, String alias, String mediaType, Integer speed, Device device) {
@@ -69,6 +70,10 @@ public class Port implements Serializable {
 
 	public void setSpeed(Integer speed) {
 		this.speed = speed;
+	}
+
+	public String getStatus() {
+		return status;
 	}
 
 	public Device getDevice() {
