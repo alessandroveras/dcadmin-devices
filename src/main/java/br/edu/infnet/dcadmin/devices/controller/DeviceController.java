@@ -58,8 +58,10 @@ public class DeviceController {
 	}
 
 	@GetMapping(value = "/{id}/bandwith")
-	public Integer calculateBandwith(@PathVariable Long id) {
-		return 30;
+	public ResponseEntity<Integer> calculateBandwith(@PathVariable Long id) {
+		Device device = deviceService.findById(id);
+		Integer availableBandwidth = device.getFabricCapacity();
+		return ResponseEntity.ok().body(availableBandwidth);
 	}
 
 }
